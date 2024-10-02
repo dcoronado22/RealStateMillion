@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RealEstateMillion.Domain\RealEstateMillion.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Services\Property\" />
+    <None Remove="Services\Owner\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Property\" />
+    <Folder Include="Services\Owner\" />
+  </ItemGroup>
+</Project>
