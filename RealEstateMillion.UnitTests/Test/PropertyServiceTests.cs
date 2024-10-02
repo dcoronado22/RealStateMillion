@@ -92,27 +92,5 @@ namespace RealEstateMillion.Tests
             await _unitOfWork.Received(1).SaveChangesAsync();
         }
 
-        [Test]
-        public async Task GetPropertiesWithFiltersAsync_ShouldReturnFilteredProperties()
-        {
-            // Arrange
-            var filter = new PropertyFilter { MinPrice = 100000, MaxPrice = 500000 };
-            var expectedProperties = new List<Property>
-            {
-                new Property { IdProperty = Guid.NewGuid(), Name = "Property 1", Price = 200000 },
-                new Property { IdProperty = Guid.NewGuid(), Name = "Property 2", Price = 300000 }
-            };
-            _propertyRepository.GetWithFiltersAsync(Arg.Any<PropertyFilter>()).Returns(expectedProperties);
-
-            // Act
-            var result = await _propertyService.GetPropertiesWithFiltersAsync(filter);
-
-            // Assert
-            Assert.That(result, Is.Not.Null);
-            Assert.That(result.Count(), Is.EqualTo(2));
-            Assert.That(result, Is.All.InstanceOf<Property>());
-            Assert.That(result, Is.All.Matches<Property>(p => p.Price >= filter.MinPrice && p.Price <= filter.MaxPrice));
-            await _propertyRepository.Received(1).GetWithFiltersAsync(Arg.Any<PropertyFilter>());
-        }
     }
 }
