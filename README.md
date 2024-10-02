@@ -54,6 +54,12 @@ dotnet restore
 dotnet ef database update --project RealEstateMillion.Infrastructure --startup-project RealEstateMillion.Api
 ```
 
+En caso de no funcionar el anterior ejecutra este:
+
+```bash
+dotnet ef database update --project RealEstateMillion.Infrastructure/RealEstateMillion.Infrastructure.csproj --startup-project RealStateMillion.Api/RealStateMillion.Api.csproj
+```
+
 ## Uso
 
 1. Ejecuta el proyecto API:
